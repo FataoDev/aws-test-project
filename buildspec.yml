@@ -1,0 +1,30 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.10
+    commands:
+      - echo Installing dependencies
+      - pip install -r requirements.txt
+  pre_build:
+    commands:
+      - echo start pre-build
+  build:
+    commands:
+      - echo Brunning unit tests with pytest
+      - pytest --junitxml=reports/results.xml --tb=short
+  post_build:
+    commands:
+      - echo Build completed successfully on `date`
+
+artifacts:
+  files:
+    - '**/*'
+  base-directory: .
+reports :
+  pytest_report:  
+    files:
+      - 'reports/results.xml'
+    discard-paths: yes
+    name: pytest-report-$(date +%Y-%m-%d-%H-%M-%S)
