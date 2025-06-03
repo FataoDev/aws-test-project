@@ -1,6 +1,2 @@
 pytest
 pytest-cov
-pytest-mock
-pytest-junit
-pytest-html
-pytest-json-report
